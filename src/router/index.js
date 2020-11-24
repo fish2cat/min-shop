@@ -1,21 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/Home.vue'
-import Category from '../components/Category.vue'
-import Shopcard from '../components/Shopcard.vue'
-import User from '../components/User.vue'
+import Home from '../pages/Home.vue'
+import Category from '../pages/Category.vue'
+import Shopcard from '../pages/Shopcard.vue'
+import User from '../pages/User.vue'
 
 Vue.use(VueRouter)
 const routes = [
   { path: '/', redirect: '/home' },
-  { path: '/home', component: Home },
-  { path: '/category', component: Category },
-  { path: '/shopcard', component: Shopcard },
-  { path: '/user', component: User }
+  { path: '/home', component: Home, meta: { title: '首页' } },
+  { path: '/category', component: Category, meta: { title: '分类' } },
+  { path: '/shopcard', component: Shopcard, meta: { title: '购物车' } },
+  { path: '/user', component: User, meta: { title: '我的' } }
 ]
 const router = new VueRouter({
   routes,
-  linkActiveClass: 'router-link-active'
+  // linkActiveClass: 'router-link-active'
+  linkActiveClass: 'mui-active'
 })
-
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
+})
 export default router

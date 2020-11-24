@@ -2,11 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Header } from 'mint-ui'
+import { Header, Button } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './lib/mui/css/mui.css'
 import './lib/mui/css/icons-extra.css'
 Vue.component(Header.name, Header)
+Vue.component(Button.name, Button)
 Vue.config.productionTip = false
 
 new Vue({
