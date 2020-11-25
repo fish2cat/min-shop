@@ -14,7 +14,7 @@ export default {
 
 <style scoped>
 .mint-swipe{
-  height:200px;
+  height:250px;
 }
 .imgStyle{
   width:100%;

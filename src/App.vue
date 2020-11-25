@@ -46,5 +46,6 @@ export default {
 <style scoped>
 .app-container {
   padding-top: 40px;
+  background: white;
 }
 </style>
