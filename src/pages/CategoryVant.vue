@@ -2,39 +2,23 @@
   <div>
     <div class="menu">
       <div class="menu-left">
-        <ul v-for="(menu,index) in menus"
-            :key="index">
-          <li
-            class="menu-item"
-            :class="{current: index === currentIndex}"
-            @click="clickList(index)"
-          >
-            <p class="text">{{ menu.name }}</p>
-          </li>
+        <ul class="mui-table-view" v-for="(menu,index) in menus" :key=index >
+          <li class="mui-table-view-cell" :class="{current: index === currentIndex}" @click="currentIndex = index">{{menu.name}}</li>
         </ul>
       </div>
       <div
         class="menu-right"
         ref="itemList"
       >
-        <!-- 右侧二级分类 -->
-        <div v-if="menus[currentIndex]">
-          <ul class="cate-item">
-            <li
-              v-for="(item, index2) in menus[currentIndex].sub"
-              :key="index2"
-              class="cate-item-li"
-            >
-              <!-- <div class="cate-item-img"> -->
-                <img class="cate-item-img"
-                  :src="item.image"
-                  alt
-                />
-              <!-- </div> -->
-              <p class="item-text">{{item.name}}</p>
-            </li>
-          </ul>
-        </div>
+      
+      <!-- 右侧二级分类 -->
+      <div v-if="menus[currentIndex]">
+        <ul class="cate-item">
+          <li v-for="(item, index2) in menus[currentIndex].sub" :key="index2" class="cate-item-li">
+            <a>{{item.name}}</a>
+          </li>
+        </ul>
+      </div>
       </div>
     </div>
   </div>
@@ -59,9 +43,6 @@ export default {
     // console.log(this.menus)
   },
   methods: {
-    clickList (index) {
-      this.currentIndex = index
-    }
   }
 }
 </script>
@@ -81,27 +62,26 @@ export default {
   /* position: absolute; */
   text-align: center;
   /* 将头部的标题让出来 */
-  /* 固定大小则无法滚动 */
   /* top: 40px; */
   /* 将下部的导航让出来 */
   /* bottom: 50px; */
   width: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
   }
   .menu-left {
     /* 定义伸缩比 基础宽度80 */
     flex: 0 0 80px;
-    background: #f3f5f7;
   }
   .menu-right {
     flex: 1;
     background: #fff;
   }
-  .menu-item {
+  .mui-table-view {
     height: 54px;
     width: 100%;
+    background: #f3f5f7;
   }
-  .text {
+  .mui-table-view-cell {
     width: 100%;
     line-height: 54px;
     margin-bottom: 0;
@@ -121,13 +101,5 @@ export default {
   }
   .cate-item-li {
         width: 33.3%;
-  }
-  .cate-item-img{
-     width: 70px;
-    height: 70px;
-  }
-  .item-text {
-    font-size: 14px;
-    color: #333;
   }
 </style>

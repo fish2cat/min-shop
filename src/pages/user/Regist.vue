@@ -91,6 +91,10 @@ export default {
       } else {
         this.$Indicator.open({ text: '注册中' })
         // 前端格式校验通过，本项目的数据格式校验放在服务器端
+        // 异常的处理方式：
+        // 第一种：then的第一个方法定义成功的回调方法
+        // then的第二个方法定义失败的回调方法
+        // 第二种：添加catch进行异常捕获
         this.$http.post('/register', this.regist).then(res => {
           this.$Indicator.close()
           if (res.data.code === 0) {
@@ -103,6 +107,7 @@ export default {
             this.$router.replace('/user')
           }
         }).catch(() => {
+          this.$Indicator.close()
           this.$Toast('注册失败')
         })
       }
