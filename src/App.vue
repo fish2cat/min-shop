@@ -22,6 +22,7 @@ import tabbar from './components/Tabbar.vue'
 export default {
   created () {
     this.showBack = this.$route.path !== '/home'
+    this.checkLogin()
   },
   data () {
     return {
@@ -38,6 +39,17 @@ export default {
   methods: {
     goBack () {
       this.$router.go(-1)
+    },
+    async checkLogin() {
+      this.$Indicator.open({
+        text: '加载中'
+      })
+      const { data: res } = await this.$http.get('/user')
+      console.log(res.msg)
+      if (res.code === 1) {
+        this.$store.commit('user/setUser', res.data.data)
+      }
+      this.$Indicator.close()
     }
   }
 }
