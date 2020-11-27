@@ -6,6 +6,7 @@ import Shopcard from '../pages/Shopcard.vue'
 import User from '../pages/User.vue'
 import Login from '../pages/user/Login.vue'
 import Regist from '../pages/user/Regist.vue'
+import GoodsList from '../pages/goods/GoodsList.vue'
 Vue.use(VueRouter)
 const routes = [
   { path: '/', redirect: '/home' },
@@ -14,7 +15,8 @@ const routes = [
   { path: '/shopcard', component: Shopcard, meta: { title: '购物车' } },
   { path: '/user', component: User, meta: { title: '我的' } },
   { path: '/user/login', component: Login, meta: { title: '登录' } },
-  { path: '/user/regist', component: Regist, meta: { title: '注册' } }
+  { path: '/user/regist', component: Regist, meta: { title: '注册' } },
+  { path: '/user/goods_list/:categoryId', component: GoodsList, meta: { title: '商品列表' }, props: true }
 ]
 const router = new VueRouter({
   routes,

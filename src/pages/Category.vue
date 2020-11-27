@@ -19,20 +19,14 @@
       >
         <!-- 右侧二级分类 -->
         <div v-if="menus[currentIndex]">
-          <ul class="cate-item">
-            <li
-              v-for="(item, index2) in menus[currentIndex].sub"
-              :key="index2"
-              class="cate-item-li"
-            >
-              <!-- <div class="cate-item-img"> -->
-                <img class="cate-item-img"
-                  :src="item.image"
-                  alt
-                />
-              <!-- </div> -->
+          <ul class="cate-item" >
+            <router-link class="cate-item-li" v-for="(item, index2) in menus[currentIndex].sub"
+              :key="index2" :to="'/user/goods_list/'+item.id">
+            <li>
+              <img class="cate-item-img" :src="item.image" />
               <p class="item-text">{{item.name}}</p>
             </li>
+            </router-link>
           </ul>
         </div>
       </div>
