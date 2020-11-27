@@ -1,14 +1,14 @@
 <template>
   <div class="goods-list">
     <div class="good-item" v-for="item in goodslist" :key="item.id">
-      <a hrf="#">
+      <router-link :to="'/user/goodsinfo/'+item.id">
         <img :src="item.image">
         <h4 class="title">{{item.name}}</h4>
         <p class="info">
           <span class="price">&yen;{{item.price}}</span>
           <span class="sell">剩余{{item.num}}</span>
         </p>
-      </a>
+      </router-link>
     </div>
     <mt-button class="more" v-if="goodslist.length !== 0" size="large" @click="getMore">
       加载更多

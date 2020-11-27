@@ -7,6 +7,7 @@ import User from '../pages/User.vue'
 import Login from '../pages/user/Login.vue'
 import Regist from '../pages/user/Regist.vue'
 import GoodsList from '../pages/goods/GoodsList.vue'
+import GoodsInfo from '../pages/goods/GoodsInfo.vue'
 Vue.use(VueRouter)
 const routes = [
   { path: '/', redirect: '/home' },
@@ -16,7 +17,8 @@ const routes = [
   { path: '/user', component: User, meta: { title: '我的' } },
   { path: '/user/login', component: Login, meta: { title: '登录' } },
   { path: '/user/regist', component: Regist, meta: { title: '注册' } },
-  { path: '/user/goods_list/:categoryId', component: GoodsList, meta: { title: '商品列表' }, props: true }
+  { path: '/user/goods_list/:categoryId', component: GoodsList, meta: { title: '商品列表' }, props: true },
+  { path: '/user/goodsinfo/:id', component: GoodsInfo, meta: { title: '商品信息' }, props: true }
 ]
 const router = new VueRouter({
   routes,
